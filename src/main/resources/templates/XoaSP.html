@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Xóa Sản phẩm</title>
+  <link rel="stylesheet" href="./css/XoaSP.css">
+</head>
+<body>
+<div>
+  <button class="btn-home" style="
+    width: 80px;
+    padding: 10px 20px;
+    background-color: #A67B5B;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 10px;">
+    <a href="/Homee">Back</a>
+  </button>
+</div>
+<div class="container">
+  <h2>Xóa Sản phẩm</h2>
+  <form id="delete-product-form">
+    <div>
+      <label for="product-name">Tên sản phẩm:</label>
+      <input type="text" id="product-name" required>
+    </div>
+    <button type="submit">Xóa sản phẩm</button>
+  </form>
+</div>
+
+<script>
+  document.getElementById('delete-product-form').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const productName = document.getElementById('product-name').value;
+
+    try {
+      const response = await fetch(`/api/sanpham/${encodeURIComponent(productName)}`, {
+        method: 'DELETE',
+      });
+
+      if (response.ok) {
+        alert('Sản phẩm đã được xóa thành công!');
+        document.getElementById('delete-product-form').reset(); // Reset form
+      } else {
+        alert('Có lỗi xảy ra khi xóa sản phẩm.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
+    }
+  });
+</script>
+
+</body>
+</html>

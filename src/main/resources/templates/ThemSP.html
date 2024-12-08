@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thêm Sản phẩm</title>
+  <link rel="stylesheet" href="./css/ThemSP.css">
+</head>
+<body>
+<div>
+  <button class="btn-home" style="
+    width: 80px;
+    padding: 10px 20px;
+    background-color: #A67B5B;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    margin-right: 10px;">
+    <a href="/Homee">Back</a>
+  </button>
+</div>
+<div class="container">
+  <h2>Thêm Sản phẩm</h2>
+  <form id="add-product-form">
+    <div>
+      <label for="product-name">Tên sản phẩm:</label>
+      <input type="text" id="product-name" required>
+    </div>
+    <div>
+      <label for="product-price">Giá sản phẩm (VND):</label>
+      <input type="number" id="product-price" required>
+    </div>
+    <div>
+      <label for="product-quantity">Số lượng:</label>
+      <input type="number" id="product-quantity" required>
+    </div>
+    <button type="submit">Thêm sản phẩm</button>
+  </form>
+</div>
+
+<script>
+  document.getElementById('add-product-form').addEventListener('submit', async function (event) {
+    event.preventDefault();
+
+    const productName = document.getElementById('product-name').value;
+    const productPrice = document.getElementById('product-price').value;
+    const productQuantity = document.getElementById('product-quantity').value;
+
+    const productData = {
+      tenSP: productName,
+      giaSP: parseInt(productPrice, 10),
+      soLuong: parseInt(productQuantity, 10)
+    };
+
+    try {
+      const response = await fetch('/api/sanpham', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(productData)
+      });
+
+      if (response.ok) {
+        alert('Sản phẩm đã được thêm thành công!');
+        document.getElementById('add-product-form').reset();
+      } else {
+        alert('Có lỗi xảy ra khi thêm sản phẩm.');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Có lỗi xảy ra. Vui lòng thử lại sau.');
+    }
+  });
+</script>
+
+</body>
+</html>

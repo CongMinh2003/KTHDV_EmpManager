@@ -1,0 +1,106 @@
+/* Reset một số thuộc tính mặc định */
+body, h2, label {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Cài đặt cho body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+/* Container cho form */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Style cho các label và input */
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+    border-color: #66afe9;
+    outline: none;
+}
+
+/* Nút Thêm sản phẩm */
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #A67B5B;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #A67B5B;
+}
+
+/* Container cho sản phẩm */
+.product-container {
+    margin-top: 20px;
+}
+
+.product-card {
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #f9f9f9;
+    display: flex;
+    align-items: center;
+}
+
+.product-card img {
+    margin-right: 10px;
+    border-radius: 4px;
+    max-width: 80px; /* Giới hạn kích thước hình ảnh */
+    height: auto;
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.product-price {
+    color: #888;
+}
+
+button a {
+    text-decoration: none;
+    color: #fff;
+}
