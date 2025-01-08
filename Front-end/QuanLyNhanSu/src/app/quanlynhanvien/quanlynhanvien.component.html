@@ -1,1 +1,53 @@
-<p>quanlynhanvien works!</p>
+<div class="container">
+  <h2>Quản lý nhân viên</h2>
+  
+  <!-- <div class="actions">
+    <button (click)="onThemNhanVien()">Thêm Nhân Viên</button>
+    <button (click)="onSuaNhanVien()">Sửa Nhân Viên</button>
+    <button (click)="onXoaNhanVien()">Xóa Nhân Viên</button>
+  </div> -->
+  <nav class="navbar">
+    <ul>
+      <li><a routerLink="/quanlynhanvien/themnhanvien">Thêm Nhân Viên</a></li>
+      <li><a routerLink="/quanlynhanvien/xoanhanvien">Xóa Nhân Viên</a></li>
+      <li><a routerLink="/quanlynhanvien/chinhsuanhanvien">Sửa nhân Viên</a></li>
+    </ul>
+  </nav>
+
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Nhập tên nhân viên để tìm kiếm" />
+    <button (click)="searchEmployees()">Tìm kiếm</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Họ và tên</th>
+        <th>Ngày sinh</th>
+        <th>Số điện thoại</th>
+        <th>Email</th>
+        <th>Địa chỉ</th>
+        <th>Chức vụ</th>
+        <th>Ngày vào làm</th>
+        <!-- <th>Hành động</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees">
+        <td>{{ employee.id }}</td>
+        <td>{{ employee.hoTen }}</td>
+        <td>{{ employee.ngaySinh | date }}</td>
+        <td>{{ employee.soDienThoai }}</td>
+        <td>{{ employee.email }}</td>
+        <td>{{ employee.diaChi }}</td>
+        <td>{{ employee.chucVu }}</td>
+        <td>{{ employee.ngayVaoLam | date }}</td>
+        <!-- <td>
+          <button (click)="editEmployee(employee)">Sửa</button>
+          <button (click)="deleteEmployee(employee.id)">Xóa</button>
+        </td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>

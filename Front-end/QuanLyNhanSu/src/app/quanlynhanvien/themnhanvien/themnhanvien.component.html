@@ -1,0 +1,35 @@
+<div class="container">
+    <h2>Thêm Nhân Viên</h2>
+    <form [formGroup]="nhanVienForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="hoTen">Họ và Tên:</label>
+        <input id="hoTen" formControlName="hoTen" required />
+      </div>
+      <div>
+        <label for="ngaySinh">Ngày Sinh:</label>
+        <input id="ngaySinh" formControlName="ngaySinh" type="date" />
+      </div>
+      <div>
+        <label for="soDienThoai">Số Điện Thoại:</label>
+        <input id="soDienThoai" formControlName="soDienThoai" />
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input id="email" formControlName="email" type="email" />
+      </div>
+      <div>
+        <label for="diaChi">Địa Chỉ:</label>
+        <textarea id="diaChi" formControlName="diaChi"></textarea>
+      </div>
+      <div>
+        <label for="chucVu">Chức Vụ:</label>
+        <input id="chucVu" formControlName="chucVu" />
+      </div>
+      <div>
+        <label for="ngayVaoLam">Ngày Vào Làm:</label>
+        <input id="ngayVaoLam" formControlName="ngayVaoLam" type="date" />
+      </div>
+      <button type="submit" [disabled]="!nhanVienForm.valid">Thêm</button>
+    </form>
+  </div>
+  

@@ -1,0 +1,11 @@
+<div class="container">
+    <h2>Xóa Nhân Viên</h2>
+    <form (ngSubmit)="onDelete()">
+      <div>
+        <label for="hoTen">Họ và Tên:</label>
+        <input id="hoTen" [(ngModel)]="tenNhanVien" name="hoTen" required />
+      </div>
+      <button type="submit" [disabled]="!tenNhanVien">Xóa Nhân Viên</button>
+    </form>
+  </div>
+  

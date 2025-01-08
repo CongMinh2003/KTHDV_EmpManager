@@ -1,0 +1,26 @@
+<div class="login-container">
+  <h2>Login</h2>
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+    <div class="form-group">
+      <label for="userName">Username</label>
+      <input id="userName" type="text" name="userName" ngModel required #userName="ngModel" />
+      <div *ngIf="userName.invalid && userName.touched" class="error">
+        Tên đăng nhập là bắt buộc!
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input id="password" type="password" name="password" ngModel required #password="ngModel" minlength="6" />
+      <div *ngIf="password.invalid && password.touched" class="error">
+        Mật khẩu là bắt buộc!
+      </div>
+    </div>
+    <button type="submit" [disabled]="loginForm.invalid">Login</button>
+  </form>
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+  <div class="extra-actions">
+    <a (click)="navigateToRegister()">Đăng ký</a>
+  </div>
+</div>
