@@ -7,12 +7,12 @@ import { Observable } from 'rxjs';
 export interface NhanVien {
   id?: number;
   hoTen: string;
-  ngaySinh?: string; // ISO format string (YYYY-MM-DD)
+  ngaySinh?: string; 
   soDienThoai?: string;
   email?: string;
   diaChi?: string;
   chucVu?: string;
-  ngayVaoLam?: string; // ISO format string
+  ngayVaoLam?: string; 
 }
 
 @Injectable({
@@ -34,18 +34,17 @@ export class NhanvienServiceService {private apiUrl = 'http://localhost:8080/api
     return this.http.post<NhanVien>(this.apiUrl, nhanVien);
   }
 
-  deleteNhanVienByName(hoTen: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/delete-by-name/${encodeURIComponent(hoTen)}`);
-  }
-
   getNhanVienByName(hoTen: string): Observable<NhanVien> {
     return this.http.get<NhanVien>(`${this.apiUrl}/find-by-name/${encodeURIComponent(hoTen)}`);
   }
 
   // Cập nhật thông tin nhân viên
-  updateNhanVien(nhanVien: NhanVien): Observable<NhanVien> {
-    return this.http.put<NhanVien>(`${this.apiUrl}/${nhanVien.id}`, nhanVien);
+  updateNhanVien(nhanVien: any): Observable<any> {
+    return this.http.post<any>(`http://localhost:8080/api/nhanvien/updatenhanvien/${nhanVien.id}`, nhanVien);
   }
 
+  deleteNhanvien(id : number):Observable<any>{
+    return this.http.delete<any>(`http://localhost:8080/api/nhanvien/deletenhanvien/${id}`)
+  }
   
 }

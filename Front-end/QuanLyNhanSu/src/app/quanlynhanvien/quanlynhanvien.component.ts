@@ -7,30 +7,18 @@ import { NhanVien, NhanvienServiceService } from '../Service/nhanvien-service.se
   styleUrl: './quanlynhanvien.component.css'
 })
 export class QuanlynhanvienComponent implements OnInit {
-  // employees: any[] = [];
-  // searchTerm: string = '';
 
-  searchTerm: string = ''; // Dữ liệu nhập để tìm kiếm
+
+  searchTerm: string = ''; 
   employees: NhanVien[] = []; // Danh sách nhân viên sau khi tìm kiếm
-
+  
+  selectedEmployee: NhanVien | null = null
   constructor(private nhanVienService: NhanvienServiceService) {}
 
-  // ngOnInit(): void {
-  //   this.getEmployees();
-  // }
-
-  // getEmployees() {
-  //   this.nhanVienService.getEmployees().subscribe((data) => {
-  //     // console.log(data);
-  //     this.employees = data;
-  //   });
-  // }
-
   ngOnInit(): void {
-    this.getAllEmployees(); // Lấy tất cả nhân viên khi tải trang
+    this.getAllEmployees(); 
   }
 
-  // Lấy danh sách tất cả nhân viên
   getAllEmployees() {
     this.nhanVienService.getEmployees().subscribe({
       next: (data) => (this.employees = data),
@@ -55,5 +43,28 @@ export class QuanlynhanvienComponent implements OnInit {
     });
   }
 
+  editEmployee(employee: NhanVien): void {
+    this.selectedEmployee = { ...employee }; // Sao chép thông tin nhân viên để chỉnh sửa
+  }
+
+  saveEmployee(): void {
+    if (this.selectedEmployee) {
+      console.log(this.selectedEmployee);
+      this.nhanVienService.updateNhanVien(this.selectedEmployee).subscribe(() => {
+        this.getAllEmployees(); 
+        this.selectedEmployee = null; 
+      });
+    }
+  }
+  deleteNhanvien(id : number):void{
+    if(confirm('bạn có chắc muốn xóa')){
+      this.nhanVienService.deleteNhanvien(id).subscribe(
+        res =>{
+          alert("xóa thành công");
+          this.getAllEmployees();
+        }
+      )
+    }
+  }
 
 }

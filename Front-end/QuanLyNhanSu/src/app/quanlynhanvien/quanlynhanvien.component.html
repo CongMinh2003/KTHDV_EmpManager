@@ -1,16 +1,11 @@
 <div class="container">
   <h2>Quản lý nhân viên</h2>
-  
-  <!-- <div class="actions">
-    <button (click)="onThemNhanVien()">Thêm Nhân Viên</button>
-    <button (click)="onSuaNhanVien()">Sửa Nhân Viên</button>
-    <button (click)="onXoaNhanVien()">Xóa Nhân Viên</button>
-  </div> -->
   <nav class="navbar">
     <ul>
       <li><a routerLink="/quanlynhanvien/themnhanvien">Thêm Nhân Viên</a></li>
-      <li><a routerLink="/quanlynhanvien/xoanhanvien">Xóa Nhân Viên</a></li>
-      <li><a routerLink="/quanlynhanvien/chinhsuanhanvien">Sửa nhân Viên</a></li>
+    </ul>
+    <ul>
+      <li><a routerLink="/quanlynhanvien/tinhluong">Lương nhân viên</a></li>
     </ul>
   </nav>
 
@@ -19,6 +14,36 @@
     <button (click)="searchEmployees()">Tìm kiếm</button>
   </div>
 
+  <div *ngIf="selectedEmployee">
+    <h2>Chỉnh sửa thông tin nhân viên</h2>
+    <form (ngSubmit)="saveEmployee()">
+      <label for="hoTen">Họ và tên:</label>
+      <input id="hoTen" [(ngModel)]="selectedEmployee.hoTen" name="hoTen" required>
+  
+      <label for="ngaySinh">Ngày sinh:</label>
+      <input id="ngaySinh" type="date" [(ngModel)]="selectedEmployee.ngaySinh" name="ngaySinh" required>
+  
+      <label for="soDienThoai">Số điện thoại:</label>
+      <input id="soDienThoai" [(ngModel)]="selectedEmployee.soDienThoai" name="soDienThoai" required>
+  
+      <label for="email">Email:</label>
+      <input id="email" type="email" [(ngModel)]="selectedEmployee.email" name="email" required>
+  
+      <label for="diaChi">Địa chỉ:</label>
+      <input id="diaChi" [(ngModel)]="selectedEmployee.diaChi" name="diaChi" required>
+  
+      <label for="chucVu">Chức vụ:</label>
+      <input id="chucVu" [(ngModel)]="selectedEmployee.chucVu" name="chucVu" required>
+  
+      <label for="ngayVaoLam">Ngày vào làm:</label>
+      <input id="ngayVaoLam" type="date" [(ngModel)]="selectedEmployee.ngayVaoLam" name="ngayVaoLam" required>
+  
+      <button type="submit">Lưu</button>
+      <button type="button" (click)="selectedEmployee = null">Hủy</button>
+
+    </form>
+  </div>
+  
   <table>
     <thead>
       <tr>
@@ -30,7 +55,7 @@
         <th>Địa chỉ</th>
         <th>Chức vụ</th>
         <th>Ngày vào làm</th>
-        <!-- <th>Hành động</th> -->
+        <th>Hành động</th>
       </tr>
     </thead>
     <tbody>
@@ -43,11 +68,12 @@
         <td>{{ employee.diaChi }}</td>
         <td>{{ employee.chucVu }}</td>
         <td>{{ employee.ngayVaoLam | date }}</td>
-        <!-- <td>
+        <td>
           <button (click)="editEmployee(employee)">Sửa</button>
-          <button (click)="deleteEmployee(employee.id)">Xóa</button>
-        </td> -->
+          <button (click)="deleteNhanvien(employee.id!)">Xóa</button>
+        </td>
       </tr>
     </tbody>
   </table>
 </div>
+

@@ -10,10 +10,11 @@ import { NhanVien, NhanvienServiceService } from '../../Service/nhanvien-service
 export class ThemnhanvienComponent {
 
   nhanVienForm: FormGroup;
+  router: any;
 
   constructor(
     private fb: FormBuilder,
-    private nhanVienService: NhanvienServiceService
+    private nhanVienService: NhanvienServiceService,
   ) {
     this.nhanVienForm = this.fb.group({
       hoTen: ['', Validators.required],
@@ -32,7 +33,9 @@ export class ThemnhanvienComponent {
       this.nhanVienService.addNhanVien(nhanVien).subscribe({
         next: (data) => {
           alert('Thêm nhân viên thành công!');
+          
           this.nhanVienForm.reset();
+          this.router.navigate(['/quanlynhanvien']);
         },
         error: (err: any) => {
           console.error('Lỗi khi thêm nhân viên:', err);

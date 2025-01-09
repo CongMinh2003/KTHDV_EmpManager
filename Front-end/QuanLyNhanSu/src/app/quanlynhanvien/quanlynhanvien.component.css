@@ -1,4 +1,4 @@
-.container {
+/* .container {
     margin: 20px;
   }
   
@@ -85,4 +85,227 @@
   .search-bar button:hover {
     background-color: #0056b3;
     cursor: pointer;
+  } */
+
+
+
+
+
+  /* Global Styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h2 {
+  color: #2c3e50;
+  margin-bottom: 20px;
+}
+
+/* Navigation Styles */
+.navbar ul {
+  list-style-type: none;
+  padding: 0;
+  /* background-color: #3498db; */
+  overflow: hidden;
+}
+
+/* .navbar li {
+  float: left;
+} */
+
+.navbar li {
+  display: flex;
+  margin-right: 10px; /* Giảm khoảng cách giữa các nút */
+  padding: 6px 12px; /* Giảm kích thước padding */
+  font-size: 18px; /* Giảm kích thước font */
+  color: black;
+  background-color: #D4EBF8;
+  border: 1px solid #D4EBF8;
+  border-radius: 4px; /* Có thể giảm border-radius nếu muốn góc vuông hơn */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Thêm hiệu ứng hover */
+}
+
+/* .navbar li:hover {
+  background-color: #b8daff; 
+  transform: scale(1.05); 
+} */
+
+.navbar li a {
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  width: 100%; /* Đảm bảo nội dung text hiển thị đúng trong nút */
+}
+
+
+.navbar ul li {
+  width: 200px;
+}
+
+.navbar a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+/* .navbar a:hover {
+  background-color: #2980b9;
+} */
+
+/* Search Bar Styles */
+.search-bar {
+  margin: 20px 0;
+  display: flex;
+}
+
+.search-bar input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+}
+
+.search-bar button {
+  padding: 10px 20px;
+  background-color: #2ecc71;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-bar button:hover {
+  background-color: #27ae60;
+}
+
+/* Form Styles */
+form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+form label {
+  display: block;
+  margin-top: 10px;
+}
+
+form input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+form button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+form button[type="submit"] {
+  background-color: #2ecc71;
+}
+
+form button:hover {
+  background-color: #2980b9;
+}
+
+form button[type="submit"]:hover {
+  background-color: #27ae60;
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #3498db;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #e0e0e0;
+}
+
+/* Button Styles */
+button {
+  padding: 8px 12px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    width: 95%;
   }
+
+  table {
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
+  .search-bar {
+    flex-direction: column;
+  }
+
+  .search-bar input[type="text"], .search-bar button {
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+}

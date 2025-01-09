@@ -5,22 +5,20 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { QuanlynhanvienComponent } from './quanlynhanvien/quanlynhanvien.component';
 import { ThemnhanvienComponent } from './quanlynhanvien/themnhanvien/themnhanvien.component';
-import { XoanhanvienComponent } from './quanlynhanvien/xoanhanvien/xoanhanvien.component';
-import { ChinhsuanhanvienComponent } from './quanlynhanvien/chinhsuanhanvien/chinhsuanhanvien.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './XacThuc/login/login.component';
 import { RegisterComponent } from './XacThuc/register/register.component';
+import { TinhLuongComponent } from './tinhluong/tinhluong.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     QuanlynhanvienComponent,
     ThemnhanvienComponent,
-    XoanhanvienComponent,
-    ChinhsuanhanvienComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    TinhLuongComponent
   ],
   imports: [
     BrowserModule,

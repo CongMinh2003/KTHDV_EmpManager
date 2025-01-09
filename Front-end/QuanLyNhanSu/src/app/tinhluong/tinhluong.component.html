@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>Tính Lương Nhân Viên</h1>
+  
+    <div *ngIf="employees.length > 0">
+      <h2>Danh Sách Nhân Viên</h2>
+      <ul>
+        <li *ngFor="let employee of employees">
+          <p><strong>{{ employee.name }}</strong></p>
+          <p>Lương cơ bản: {{ employee.salary }} VNĐ</p>
+          <p>Thưởng: {{ employee.bonus }} VNĐ</p>
+          <p>Khấu trừ: {{ employee.deduction }} VNĐ</p>
+          <p><strong>Tổng Lương: {{ getTotalSalary(employee) }} VNĐ</strong></p>
+          <hr>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+    

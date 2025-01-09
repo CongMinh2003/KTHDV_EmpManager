@@ -1,6 +1,8 @@
 package com.example.QuanLyNhanVien.Controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -8,10 +10,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.QuanLyNhanVien.Entity.NhanVien;
@@ -43,17 +43,8 @@ public class NhanVienController {
         return nhanVienService.addNhanVien(nhanVien);
     }
 
-    @DeleteMapping("/delete-by-name/{hoTen}")
-    public ResponseEntity<Void> deleteNhanVienByName(@PathVariable String hoTen) {
-        boolean deleted = nhanVienService.deleteNhanVienByName(hoTen);
-        if (deleted) {
-            return ResponseEntity.ok().build();
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
 
-     // Lấy thông tin nhân viên theo tên
+    // Lấy thông tin nhân viên theo tên
      @GetMapping("/find-by-name/{hoTen}")
      public ResponseEntity<List<NhanVien>> getNhanVienByName(@PathVariable String hoTen) {
          List<NhanVien> nhanViens = nhanVienService.findByHoTen(hoTen);
@@ -66,12 +57,21 @@ public class NhanVienController {
      
 
     // Cập nhật thông tin nhân viên
-    @PutMapping("/{id}")
+    @PostMapping("updatenhanvien/{id}")
     public ResponseEntity<NhanVien> updateNhanVien(@PathVariable int id, @RequestBody NhanVien nhanVien) {
-        nhanVien.setId(id);  
-        NhanVien updatedNhanVien = nhanVienService.save(nhanVien);
-        return ResponseEntity.ok(updatedNhanVien);
+         nhanVienService.updateNhanvien(id, nhanVien);
+        return ResponseEntity.ok(nhanVien);
     }
-    
+
+    @DeleteMapping("deletenhanvien/{id}")
+    public ResponseEntity<Map<String,String>> updateNhanVien(@PathVariable int id) {
+         nhanVienService.deleteNhanVien(id);
+         Map<String,String> respones = new HashMap<>();
+         respones.put("meagges", "xóa thành công");
+        return ResponseEntity.ok(respones);
+    }
+
+
+
 
 }
